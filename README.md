@@ -1,12 +1,12 @@
 # NestJS, GraphQL
 
-# Installation
+## Installation
 
 ```bash
 $ yarn install
 ```
 
-# Running the app
+## Running the app
 
 ### backend
 
@@ -28,7 +28,7 @@ After successful launch, go to the following URL in your browser
 
 - Backend: http://localhost:3300/graphql
 
-# GraphQL exmaple
+## GraphQL exmaple
 
 ```graphQL
 mutation AddBook {
