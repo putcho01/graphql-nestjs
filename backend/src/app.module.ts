@@ -4,15 +4,27 @@ import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { join } from 'path';
 import { BooksModule } from './books/books.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Book } from './books/book';
 
 @Module({
-  imports: [
-    GraphQLModule.forRoot({
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-    }),
-    BooksModule,
-   ],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		GraphQLModule.forRoot({
+			autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+		}),
+		TypeOrmModule.forRoot({
+			type: 'mysql',
+			host: 'localhost',
+			port: 3306,
+			username: 'root',
+			password: '',
+			database: 'nestjs_learn',
+			entities: [Book],
+			synchronize: true,
+		}),
+		BooksModule,
+	],
+	controllers: [AppController],
+	providers: [AppService],
 })
 export class AppModule {}
