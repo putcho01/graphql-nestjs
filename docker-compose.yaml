@@ -1,0 +1,45 @@
+version: '3'
+
+x-dev-base: &dev-base
+  build: .
+  environment:
+    DB_HOST: mysql01
+    DB_PORT: 3306
+    DB_USERNAME: root
+    DB_PASSWORD: root
+    DB_NAME: nestjs_learn
+    SERVER_APOLLO_URI: http://backend:3300
+    PUBLIC_APOLLO_URI: http://localhost:3300
+  volumes:
+    - .:/app
+    - /app/node_modules
+    - /app/backend/node_modules
+    - /app/frontend/node_modules
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql01
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: nestjs_learn
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
+      TZ: 'Asia/Tokyo'
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+    volumes:
+      - './docker/mysql/data:/var/lib/mysql'
+      - './docker/mysql/conf:/etc/mysql/conf.d'
+      - './docker/mysql/initdb:/docker-entrypoint-initdb.d'
+    ports:
+      - 3306:3306
+
+  backend:
+    <<: *dev-base
+    working_dir: /app/backend
+    command: yarn start:dev
+    tty: true
+    depends_on:
+      - mysql
+    ports:
+      - '3300:3300'

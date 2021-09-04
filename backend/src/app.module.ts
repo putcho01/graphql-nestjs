@@ -14,10 +14,10 @@ import { Book } from './books/book';
 		}),
 		TypeOrmModule.forRoot({
 			type: 'mysql',
-			host: 'localhost',
+			host: 'mysql01',
 			port: 3306,
 			username: 'root',
-			password: '',
+			password: 'root',
 			database: 'nestjs_learn',
 			entities: [Book],
 			synchronize: true,
