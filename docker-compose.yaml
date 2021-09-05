@@ -12,9 +12,7 @@ x-dev-base: &dev-base
     PUBLIC_APOLLO_URI: http://localhost:3300
   volumes:
     - .:/app
-    - /app/node_modules
     - /app/backend/node_modules
-    - /app/frontend/node_modules
 
 services:
   mysql:
@@ -35,7 +33,7 @@ services:
       - 3306:3306
 
   backend:
-    <<: *dev-base
+    << : *dev-base
     working_dir: /app/backend
     command: yarn start:dev
     tty: true

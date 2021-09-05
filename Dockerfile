@@ -4,6 +4,4 @@ WORKDIR /app
 
 COPY . .
 
-RUN yarn install
-
-EXPOSE 3300
+RUN cd backend && yarn install
