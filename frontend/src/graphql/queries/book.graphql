@@ -1,0 +1,15 @@
+query books {
+	books {
+		title
+		price
+		createdAt
+	}
+}
+
+query getBook($id: Int!) {
+	getBook(id: $id) {
+		title
+		price
+		createdAt
+	}
+}

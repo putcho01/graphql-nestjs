@@ -1,0 +1,13 @@
+mutation addBook($newBook: NewBookInput!) {
+	addBook(newBook: $newBook) {
+		title
+		id
+		author
+		createdAt
+		price
+	}
+}
+
+mutation removeBook($id: Int!) {
+	removeBook(id: $id)
+}
