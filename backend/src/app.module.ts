@@ -6,6 +6,8 @@ import { join } from 'path';
 import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Book } from './books/book';
+import { StoresModule } from './stores/stores.module';
+import { ReviewsModule } from './reviews/reviews.module';
 
 @Module({
 	imports: [
@@ -23,6 +25,8 @@ import { Book } from './books/book';
 			synchronize: true,
 		}),
 		BooksModule,
+		StoresModule,
+		ReviewsModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
