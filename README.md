@@ -1,4 +1,4 @@
-# NestJS, GraphQL
+# NestJS,TypeORM, GraphQL
 
 ## Installation
 
