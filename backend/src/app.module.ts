@@ -6,6 +6,10 @@ import { join } from 'path';
 import { BooksModule } from './books/books.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Book } from './books/book';
+import { StoresModule } from './stores/stores.module';
+import { ReviewsModule } from './reviews/reviews.module';
+import { Review } from './reviews/review';
+import { Store } from './stores/store';
 
 @Module({
 	imports: [
@@ -19,10 +23,12 @@ import { Book } from './books/book';
 			username: 'root',
 			password: 'root',
 			database: 'nestjs_learn',
-			entities: [Book],
+			entities: [Book, Review, Store],
 			synchronize: true,
 		}),
 		BooksModule,
+		StoresModule,
+		ReviewsModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],
