@@ -20,7 +20,26 @@ After successful launch, go to the following URL in your browser
 
 ## DB
 
-### 接続
+### Stores Table
+|Field|Type|Key|
+|:--:|:--:|:--:|
+|id|int|PRI|
+|score|float|
+|name|varchar(255)|	
+|address|varchar(255)|
+|genre|varchar(255)|
+
+
+### Reviews Table
+|Field|Type|Key|
+|:--:|:--:|:--:|
+|id|int|PRI|
+|storeId|int|
+|score|float|	
+|title|text|
+|content|text|
+
+- 接続
 
 ```bash
 mysql -h 127.0.0.1 -P 3306 -u root -p;
