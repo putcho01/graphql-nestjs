@@ -1,0 +1,19 @@
+query reviews {
+	reviews {
+		id
+		storeId
+		score
+		title
+		content
+	}
+}
+
+query getReview($id: Int!) {
+	getReview(id: $id) {
+		id
+		storeId
+		score
+		title
+		content
+	}
+}
