@@ -1,0 +1,12 @@
+mutation addStore($newStore: NewStoreInput!) {
+	addStore(newStore: $newStore) {
+		name
+		address
+		genre
+		score
+	}
+}
+
+mutation removeStore($id: Int!) {
+	removeStore(id: $id)
+}

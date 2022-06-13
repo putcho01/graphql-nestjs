@@ -1,0 +1,12 @@
+mutation addReview($newReview: NewReviewInput!) {
+	addReview(newReview: $newReview) {
+		storeId
+		score
+		title
+		content
+	}
+}
+
+mutation removeReview($id: Int!) {
+	removeReview(id: $id)
+}
