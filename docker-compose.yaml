@@ -12,7 +12,9 @@ x-dev-base: &dev-base
     PUBLIC_APOLLO_URI: http://localhost:3300
   volumes:
     - .:/app
-    - /app/backend/node_modules
+    - /app/node_modules
+    - /app/packages/backend/node_modules
+    - /app/packages/frontend/node_modules
 
 services:
   mysql:
@@ -32,12 +34,29 @@ services:
     ports:
       - 3306:3306
 
+  # migrate:
+  #   << : *dev-base
+  #   working_dir: /app/packages/backend
+  #   command: yarn migrate:deploy
+  #   depends_on:
+  #     - mysql
   backend:
-    << : *dev-base
-    working_dir: /app/backend
+    <<: *dev-base
+    working_dir: /app/packages/backend
     command: yarn start:dev
     tty: true
     depends_on:
       - mysql
+      # - migrate
     ports:
       - '3300:3300'
+
+  frontend:
+    <<: *dev-base
+    working_dir: /app/packages/frontend
+    command: yarn dev
+    tty: true
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'
