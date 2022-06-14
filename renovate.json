@@ -1,5 +1,14 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    "group:allNonMajor"
+  ],
+  "timezone": "Asia/Tokyo",
+  "vulnerabilityAlerts": {
+    "labels": ["security"]
+  },
+  "ignorePaths": [
+    "Dockerfile",
+    "docker-compose.yaml"
   ]
 }
