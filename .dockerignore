@@ -1,3 +1,5 @@
 node_modules
-backend/node_modules
-backend/dist
+packages/backend/node_modules
+packages/backend/dist
+packages/frontend/node_modules
+packages/frontend/.next
