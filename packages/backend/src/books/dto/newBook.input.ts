@@ -3,6 +3,12 @@ import { Max, MaxLength, Min } from "class-validator";
 
 @InputType()
 export class NewBookInput {
+  constructor() {
+    this.title = "";
+    this.price = 0;
+    this.author = "";
+  }
+
   @Field()
   @MaxLength(30)
   title: string;

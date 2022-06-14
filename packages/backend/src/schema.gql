@@ -15,20 +15,20 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type Review {
-  id: ID!
-  storeId: ID!
-  score: Int!
-  title: String!
-  content: String!
-}
-
 type Store {
   id: ID!
   score: Int!
   name: String!
   address: String!
   genre: String!
+}
+
+type Review {
+  id: ID!
+  storeId: ID!
+  score: Int!
+  title: String!
+  content: String!
 }
 
 type Query {
@@ -50,21 +50,21 @@ type Mutation {
 }
 
 input NewBookInput {
-  title: String!
-  price: Int!
-  author: [String!]!
+  title: String = ""
+  price: Int = 0
+  author: [String!] = ""
 }
 
 input NewStoreInput {
-  name: String!
-  address: String!
-  genre: String!
-  score: Int!
+  name: String = ""
+  address: String = ""
+  genre: String = ""
+  score: Int = 0
 }
 
 input NewReviewInput {
-  storeId: Int!
-  score: Int!
-  title: String!
-  content: String!
+  storeId: Int = 1
+  score: Int = 0
+  title: String = ""
+  content: String = ""
 }

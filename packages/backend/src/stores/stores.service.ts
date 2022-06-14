@@ -17,16 +17,12 @@ export class StoresService {
   }
 
   async findOneById(id: number): Promise<Store> {
-    const store = await this.storesRepostiory.findOne(id);
+    const store = await this.storesRepostiory.findOne({ where: { id: id } });
     if (!store) {
       throw new NotFoundException(`Genre with id ${id} not found.`);
     }
 
     return store;
-  }
-
-  async findById(id: number): Promise<Store> {
-    return await this.storesRepostiory.findOne({ where: { id: id } });
   }
 
   async create(data: NewStoreInput): Promise<Store> {
@@ -37,6 +33,9 @@ export class StoresService {
 
   async remove(id: number): Promise<boolean> {
     const result = await this.storesRepostiory.delete(id);
+    if (!result.affected) {
+      return false;
+    }
     return result.affected > 0;
   }
 }

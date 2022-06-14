@@ -1,6 +1,5 @@
 import { join } from "path";
 
-import { ApolloDriver } from "@nestjs/apollo";
 import { Module } from "@nestjs/common";
 import { GraphQLModule } from "@nestjs/graphql";
 import { TypeOrmModule } from "@nestjs/typeorm";
@@ -17,18 +16,19 @@ import { StoresModule } from "./stores/stores.module";
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), "src/schema.gql"),
     }),
-    TypeOrmModule.forRoot({
-      type: "mysql",
-      host: "mysql01",
-      port: 3306,
-      username: "root",
-      password: "root",
-      database: "nestjs_learn",
-      entities: [Book, Review, Store],
-      synchronize: true,
+    TypeOrmModule.forRootAsync({
+      useFactory: () => ({
+        type: "mysql",
+        host: process.env.DB_HOST,
+        port: 3306,
+        username: process.env.DB_USERNAME,
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_NAME,
+        entities: [Book, Review, Store],
+        synchronize: true,
+      }),
     }),
     BooksModule,
     StoresModule,

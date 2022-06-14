@@ -3,6 +3,13 @@ import { IsNotEmpty, IsNumber, Length, MaxLength } from "class-validator";
 
 @InputType()
 export class NewStoreInput {
+  constructor() {
+    this.name = "";
+    this.address = "";
+    this.genre = "";
+    this.score = 0;
+  }
+
   @Field()
   @IsNotEmpty()
   name: string;

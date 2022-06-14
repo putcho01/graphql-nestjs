@@ -5,8 +5,8 @@ x-dev-base: &dev-base
   environment:
     DB_HOST: mysql01
     DB_PORT: 3306
-    DB_USERNAME: root
-    DB_PASSWORD: root
+    DB_USERNAME: scott
+    DB_PASSWORD: tiger
     DB_NAME: nestjs_learn
     SERVER_APOLLO_URI: http://backend:3300
     PUBLIC_APOLLO_URI: http://localhost:3300
@@ -20,6 +20,7 @@ services:
   mysql:
     image: mysql:latest
     container_name: mysql01
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: nestjs_learn
@@ -55,7 +56,6 @@ services:
     <<: *dev-base
     working_dir: /app/packages/frontend
     command: yarn dev
-    tty: true
     depends_on:
       - backend
     ports:

@@ -5,7 +5,7 @@ import { NewReviewInput } from "./dto/newReview.input";
 import { Review } from "./review";
 import { ReviewsService } from "./reviews.service";
 
-@Resolver((of) => Review)
+@Resolver(() => Review)
 export class ReviewsResolver {
   constructor(private reviewsService: ReviewsService) {}
 

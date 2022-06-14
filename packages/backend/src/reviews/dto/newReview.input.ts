@@ -3,6 +3,13 @@ import { IsInt, IsNotEmpty, Max, MaxLength, Min } from "class-validator";
 
 @InputType()
 export class NewReviewInput {
+  constructor() {
+    this.storeId = 1;
+    this.score = 0;
+    this.title = "";
+    this.content = "";
+  }
+
   @Field((type) => Int)
   @IsNotEmpty()
   storeId: number;

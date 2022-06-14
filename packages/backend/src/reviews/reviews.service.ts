@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
 
@@ -19,18 +19,26 @@ export class ReviewsService {
     return this.reviewsRepostiory.find();
   }
 
-  findOneById(id: number): Promise<Review> {
-    return this.reviewsRepostiory.findOne(id);
+  async findOneById(id: number): Promise<Review> {
+    const review = await this.reviewsRepostiory.findOne({ where: { id: id } });
+    if (!review) {
+      throw new NotFoundException(`Genre with id ${id} not found.`);
+    }
+
+    return review;
   }
 
   async create({ storeId, ...data }: NewReviewInput): Promise<Review> {
-    const store = await this.storeService.findById(storeId);
+    const store = await this.storeService.findOneById(storeId);
     const review = this.reviewsRepostiory.create({ ...data, store });
     return review.save();
   }
 
   async remove(id: number): Promise<boolean> {
     const result = await this.reviewsRepostiory.delete(id);
+    if (!result.affected) {
+      return false;
+    }
     return result.affected > 0;
   }
 }
