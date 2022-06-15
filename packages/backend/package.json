@@ -35,7 +35,7 @@
 		"apollo-server-express": "2.25.3",
 		"class-transformer": "^0.4.0",
 		"class-validator": "^0.13.1",
-		"graphql": "15.7.2",
+		"graphql": "16.5.0",
 		"graphql-tools": "7.0.5",
 		"mysql2": "^2.3.0",
 		"prisma": "2.30.3",
