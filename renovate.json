@@ -1,14 +1,31 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
     "group:allNonMajor"
   ],
+  "labels": ["dependencies"],
   "timezone": "Asia/Tokyo",
+  "schedule": ["after 10pm and before 5am every weekend"],
   "vulnerabilityAlerts": {
     "labels": ["security"]
   },
   "ignorePaths": [
     "Dockerfile",
     "docker-compose.yaml"
+  ],
+  "automerge": true,
+  "packageRules": [
+    {
+      "matchDepTypes": ["devDependencies"],
+      "groupName": "devDependencies",
+      "rangeStrategy": "update-lockfile"
+    },
+    {
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "patch"],
+      "groupName": "dependencies (non-major)",
+      "rangeStrategy": "pin"
+    }
   ]
 }
