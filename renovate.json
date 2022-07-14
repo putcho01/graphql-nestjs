@@ -2,10 +2,13 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
     "config:base",
+    ":prHourlyLimitNone",
+    ":automergePatch"
   ],
   "labels": ["dependencies"],
   "timezone": "Asia/Tokyo",
   "schedule": ["after 10pm and before 5am every weekend"],
+  "dependencyDashboard": true,
   "vulnerabilityAlerts": {
     "labels": ["security"]
   },
@@ -13,7 +16,6 @@
     "Dockerfile",
     "docker-compose.yaml"
   ],
-  "automerge": true,
   "packageRules": [
     {
       "matchDepTypes": ["devDependencies"],
@@ -25,6 +27,19 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "dependencies (non-major)",
       "rangeStrategy": "pin"
+    },
+    {
+      "matchPackagePatterns": ["^@types/"],
+      "automerge": true,
+      "major": {
+        "automerge": false
+      }
+    },
+    {
+      "groupName": "linters",
+      "extends": ["packages:linters"],
+      "matchPackageNames": ["prettier"],
+      "matchPackagePatterns": ["^@typescript-eslint/"]
     }
   ]
 }
