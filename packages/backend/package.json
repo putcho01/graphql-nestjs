@@ -34,15 +34,15 @@
 		"@prisma/client": "4.0.0",
 		"apollo-server-express": "3.9.0",
 		"class-transformer": "0.5.1",
-		"class-validator": "^0.13.1",
+		"class-validator": "0.13.2",
 		"graphql": "16.5.0",
 		"graphql-tools": "7.0.5",
-		"mysql2": "^2.3.0",
+		"mysql2": "2.3.3",
 		"prisma": "4.0.0",
 		"reflect-metadata": "0.1.13",
 		"rimraf": "3.0.2",
 		"rxjs": "7.5.5",
-		"typeorm": "^0.3.6"
+		"typeorm": "0.3.6"
 	},
 	"devDependencies": {
 		"@nestjs/testing": "^9.0.0",
