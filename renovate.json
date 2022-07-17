@@ -26,7 +26,6 @@
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "dependencies (non-major)",
-      "rangeStrategy": "pin"
     },
     {
       "matchPackagePatterns": ["^@types/"],
