@@ -30,7 +30,7 @@
 		"@nestjs/graphql": "10.0.18",
 		"@nestjs/platform-express": "9.0.3",
 		"@nestjs/schematics": "9.0.1",
-		"@nestjs/typeorm": "8.1.4",
+		"@nestjs/typeorm": "9.0.0",
 		"@prisma/client": "4.0.0",
 		"apollo-server-express": "3.10.0",
 		"class-transformer": "0.5.1",
